@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nail Extension Studio | Virtual Builder</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Design your perfect manicure with our Virtual Nail Builder.">
+</head>
+<body>
+
+    <header class="sticky-header">
+        <div class="container nav-container">
+            <div class="logo">Sarahs NailStudio.</div>
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#builder" class="active">Builder</a></li>
+                    <li><a href="#library">Designs</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#wishlist">Wishlist</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#book" class="btn-nav-cta">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Your Nails, Designed by You.</h1>
+            <p>Experience the ultimate virtual manicure studio. Customize shape, length, and art in real-time.</p>
+            <div class="hero-btns">
+                <a href="#builder" class="btn btn-primary">Start Building</a>
+                <a href="#library" class="btn btn-secondary">View Trends</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="builder" class="section builder-section">
+        <div class="container builder-grid">
+            
+            <div class="controls-panel">
+                <div class="panel-header">
+                    <h2>Studio Controls</h2>
+                    <button id="reset-btn" class="btn-text">Reset Default</button>
+                </div>
+
+                <div class="control-group">
+                    <h3>1. Shape</h3>
+                    <div class="shape-selector">
+                        <label class="radio-card">
+                            <input type="radio" name="shape" value="square" checked>
+                            <span class="shape-visual square"></span>
+                            <span class="label-text">Square</span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="shape" value="almond">
+                            <span class="shape-visual almond"></span>
+                            <span class="label-text">Almond</span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="shape" value="coffin">
+                            <span class="shape-visual coffin"></span>
+                            <span class="label-text">Coffin</span>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="shape" value="stiletto">
+                            <span class="shape-visual stiletto"></span>
+                            <span class="label-text">Stiletto</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>2. Length</h3>
+                    <div class="range-wrapper">
+                        <input type="range" id="length-slider" min="1" max="3" step="1" value="2">
+                        <div class="range-labels">
+                            <span>Short</span><span>Medium</span><span>Long</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>3. Base Color</h3>
+                    <div class="color-picker-grid" id="color-swatches">
+                        </div>
+                    <div class="custom-color-wrapper">
+                        <label for="custom-color">Custom:</label>
+                        <input type="color" id="custom-color" value="#eec4c4">
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>4. Finish</h3>
+                    <div class="toggle-group">
+                        <button class="toggle-btn active" data-finish="glossy">Glossy</button>
+                        <button class="toggle-btn" data-finish="matte">Matte</button>
+                        <button class="toggle-btn" data-finish="chrome">Chrome</button>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>5. Pattern</h3>
+                    <select id="pattern-select" class="styled-select">
+                        <option value="solid">Solid Color</option>
+                        <option value="french">Classic French Tip</option>
+                        <option value="ombre">Vertical Ombre</option>
+                        <option value="marble">Marble Effect</option>
+                    </select>
+                
+                    <div class="upload-row">
+                        <label for="nail-texture-upload" class="btn btn-outline btn-small">Upload nail texture</label>
+                        <input type="file" id="nail-texture-upload" accept="image/*" hidden>
+                        <button id="clear-nail-texture" class="btn-text btn-small" type="button">Clear</button>
+                    </div>
+                    <p class="small-text">If a photo texture is uploaded, it overrides the pattern.</p>
+</div>
+
+                <div class="control-group">
+                    <h3>6. Accent Nail (Ring Finger)</h3>
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" id="accent-toggle">
+                        <span class="checkmark"></span>
+                        Enable distinct accent style
+                    </label>
+                    <div id="accent-controls" class="hidden">
+                        <p class="small-text">Select accent color:</p>
+                        <input type="color" id="accent-color" value="#ffffff">
+                    </div>
+                </div>
+
+                
+                <div class="control-group">
+                    <h3>7. Try On Me</h3>
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" id="tryon-toggle">
+                        <span class="checkmark"></span>
+                        Use my hand photo
+                    </label>
+
+                    <div id="tryon-controls" class="hidden">
+                        <div class="upload-row">
+                            <label for="tryon-upload" class="btn btn-outline btn-small">Upload hand photo</label>
+                            <input type="file" id="tryon-upload" accept="image/*" hidden>
+                            <button id="tryon-clear" class="btn-text btn-small" type="button">Clear</button>
+                        </div>
+
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="tryon-edit" checked>
+                            <span class="checkmark"></span>
+                            Edit nail alignment (drag nails)
+                        </label>
+
+                        <div class="upload-row">
+<button id="tryon-auto-align" class="btn btn-primary btn-small" type="button">Auto align nails</button>
+                            <button id="tryon-reset-alignment" class="btn btn-outline btn-small" type="button">Reset nail positions</button>
+                        </div>
+
+                        <p class="small-text">Tip: Use a straight-on photo where nails are clearly visible.</p>
+                    </div>
+                </div>
+<div class="builder-actions">
+                    <button id="save-look-btn" class="btn btn-outline">Save to Wishlist</button>
+                    <a href="#pricing" class="btn btn-primary">Get Price</a>
+                </div>
+            </div>
+
+            <div class="preview-panel">
+                <div class="hand-container" id="hand-container">
+                    <img id="tryon-photo" class="tryon-photo hidden" alt="Your hand photo">
+                    <svg class="hand-svg" id="hand-svg" viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice" aria-labelledby="handTitle">
+                        <title id="handTitle">Interactive Hand Mockup</title>
+                        <filter id="skin-shadow">
+                            <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.15"/>
+                        </filter>
+                        <g filter="url(#skin-shadow)">
+                            <path class="skin-tone" d="M80,300 C80,300 60,180 90,150 C110,130 130,160 130,180 L130,400" /> <path class="skin-tone" d="M140,400 L140,120 C140,90 190,90 190,120 L190,400" /> <path class="skin-tone" d="M200,400 L200,80 C200,50 250,50 250,80 L250,400" /> <path class="skin-tone" d="M260,400 L260,100 C260,70 310,70 310,100 L310,350" /> <path class="skin-tone" d="M320,400 L350,250 C370,230 400,260 380,350 L320,500" /> <rect x="80" y="350" width="300" height="250" class="skin-tone" /> </g>
+                    </svg>
+
+                    <div class="nail-layer" id="nail-pinky" style="left: 23%; top: 25%;"></div>
+                    <div class="nail-layer" id="nail-ring" style="left: 38%; top: 19%;"></div>
+                    <div class="nail-layer" id="nail-middle" style="left: 53%; top: 12%;"></div>
+                    <div class="nail-layer" id="nail-index" style="left: 68%; top: 16%;"></div>
+                    <div class="nail-layer thumb-nail" id="nail-thumb" style="left: 88%; top: 40%; transform: rotate(20deg);"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="library" class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Design Library</h2>
+                <div class="filter-bar">
+                    <input type="text" id="library-search" placeholder="Search designs...">
+                    <select id="library-filter">
+                        <option value="all">All Vibes</option>
+                        <option value="Minimal">Minimal</option>
+                        <option value="Glam">Glam</option>
+                        <option value="Party">Party</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid library-grid" id="library-grid">
+                </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section">
+        <div class="container">
+            <div class="pricing-layout">
+                <div class="pricing-options">
+                    <h2>Estimate Your Set</h2>
+                    <form id="pricing-form">
+                        <div class="form-group">
+                            <label>Extension Type</label>
+                            <select id="ext-type">
+                                <option value="gel">Hard Gel (+$0)</option>
+                                <option value="acrylic">Acrylic (+$5)</option>
+                                <option value="polygel">Polygel (+$10)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Add-ons</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" class="addon-check" value="gems" data-price="10"> Swarovski Gems (+$10)</label>
+                                <label><input type="checkbox" class="addon-check" value="art" data-price="20"> Hand-painted Art (+$20)</label>
+                                <label><input type="checkbox" class="addon-check" value="cuticle" data-price="15"> Deluxe Cuticle Care (+$15)</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="pricing-card">
+                    <h3>Total Estimate</h3>
+                    <div class="price-display">$<span id="total-price">0</span></div>
+                    <div class="time-display">⏱ <span id="total-time">0</span> mins</div>
+                    <ul class="price-breakdown" id="price-breakdown">
+                        </ul>
+                    <button class="btn btn-primary full-width" onclick="location.href='#book'">Proceed to Booking</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="wishlist" class="section bg-light">
+        <div class="container">
+            <h2>Your Wishlist</h2>
+            <div id="wishlist-grid" class="grid wishlist-grid">
+                <p id="empty-wishlist-msg">No saved looks yet.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="book" class="section">
+        <div class="container small-container">
+            <h2>Book Appointment</h2>
+            <form id="booking-form" class="booking-form">
+                <div class="form-row">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+                <input type="email" placeholder="Email Address" required>
+                <div class="form-row">
+                    <input type="date" required>
+                    <select required>
+                        <option value="">Select Time</option>
+                        <option>10:00 AM</option>
+                        <option>12:00 PM</option>
+                        <option>2:00 PM</option>
+                        <option>4:00 PM</option>
+                    </select>
+                </div>
+                <textarea placeholder="Special notes or allergies..."></textarea>
+                <button type="submit" class="btn btn-primary">Confirm Request</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="faq" class="section bg-light">
+        <div class="container small-container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="accordion" id="faq-accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">How long do the nails last?</button>
+                    <div class="accordion-body">Typically 3-4 weeks depending on your lifestyle and aftercare.</div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Can I bring my own design?</button>
+                    <div class="accordion-body">Absolutely! Use our builder to mock it up, or bring a photo.</div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Is removal included?</button>
+                    <div class="accordion-body">Removal of our work is $10, or free with a new full set.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Nail Extension Studio. Demo Project.</p>
+        </div>
+    </footer>
+
+    <div id="save-modal" class="modal" aria-hidden="true">
+        <div class="modal-overlay" tabindex="-1" data-close="true"></div>
+        <div class="modal-content" role="dialog" aria-modal="true">
+            <button class="modal-close" data-close="true">&times;</button>
+            <h3>Save this Look</h3>
+            <p>Give your creation a name to find it later.</p>
+            <input type="text" id="save-name-input" placeholder="e.g. Birthday Nails" class="modal-input">
+            <button id="confirm-save-btn" class="btn btn-primary full-width">Save to Wishlist</button>
+        </div>
+    </div>
+
+    <div id="toast" class="toast hidden">Action Successful</div>
+
+    
+    <!-- MediaPipe Hands (for auto nail alignment in Try On Me) -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+/* --- VARIABLES & RESET --- */
+:root {
+    --primary: #d4a373;
+    --primary-dark: #b07d4b;
+    --secondary: #faedcd;
+    --accent: #ccd5ae;
+    --dark: #333;
+    --light: #fefefe;
+    --gray: #f4f4f4;
+    --shadow: 0 4px 15px rgba(0,0,0,0.08);
+    --radius: 12px;
+    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-main);
+    color: var(--dark);
+    line-height: 1.6;
+    background-color: #fff;
+}
+
+/* --- UTILITIES --- */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.small-container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+.section { padding: 80px 0; }
+.bg-light { background-color: var(--gray); }
+.hidden { display: none !important; }
+.full-width { width: 100%; }
+
+/* --- BUTTONS --- */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+.btn-primary { background: var(--dark); color: #fff; }
+.btn-primary:hover { background: #000; transform: translateY(-2px); }
+.btn-secondary { background: #fff; color: var(--dark); border: 1px solid var(--dark); }
+.btn-secondary:hover { background: var(--gray); }
+.btn-outline { border: 1px solid var(--dark); background: transparent; }
+.btn-text { background: none; border: none; text-decoration: underline; cursor: pointer; color: #666; }
+
+/* --- HEADER --- */
+.sticky-header {
+    position: sticky; top: 0; background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid #eee;
+}
+.nav-container {
+    display: flex; justify-content: space-between; align-items: center; height: 70px;
+}
+.logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
+.main-nav ul { list-style: none; display: flex; gap: 30px; }
+.main-nav a { text-decoration: none; color: var(--dark); font-size: 0.95rem; }
+.main-nav a.active { color: var(--primary-dark); font-weight: 700; }
+.btn-nav-cta { background: var(--primary); color: #fff !important; padding: 8px 18px; border-radius: 20px; }
+
+/* Mobile Nav Toggle */
+.mobile-nav-toggle { display: none; background: none; border: none; cursor: pointer; }
+
+/* --- HERO --- */
+.hero {
+    background: linear-gradient(135deg, #faedcd 0%, #fefefe 100%);
+    text-align: center; padding: 100px 20px;
+}
+.hero h1 { font-size: 3.5rem; margin-bottom: 20px; line-height: 1.1; }
+.hero-btns { margin-top: 30px; display: flex; gap: 15px; justify-content: center; }
+
+/* --- BUILDER SECTION --- */
+.builder-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;
+}
+
+/* Controls */
+.controls-panel {
+    background: #fff; padding: 30px; border-radius: var(--radius);
+    box-shadow: var(--shadow); position: relative;
+}
+.panel-header { display: flex; justify-content: space-between; margin-bottom: 20px; }
+.control-group { margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+.control-group h3 { font-size: 1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; color: #777; }
+
+/* Shape Selector */
+.shape-selector { display: flex; gap: 10px; justify-content: space-between; }
+.radio-card { cursor: pointer; text-align: center; flex: 1; }
+.radio-card input { display: none; }
+.shape-visual {
+    display: block; width: 40px; height: 50px; background: #eee; margin: 0 auto 8px;
+    border: 2px solid transparent; transition: 0.3s;
+}
+.radio-card input:checked + .shape-visual { background: var(--primary); border-color: var(--dark); }
+.label-text { font-size: 0.8rem; }
+
+/* Visual definitions for shape icons */
+.shape-visual.square { border-radius: 2px; }
+.shape-visual.almond { border-radius: 50% 50% 50% 50% / 90% 90% 40% 40%; }
+.shape-visual.stiletto { border-radius: 50% 50% 50% 50% / 100% 100% 40% 40%; }
+.shape-visual.coffin { clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%); width: 35px; }
+
+/* Color Picker */
+.color-picker-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 10px; }
+.swatch {
+    width: 30px; height: 30px; border-radius: 50%; cursor: pointer; border: 2px solid transparent;
+}
+.swatch.active { border-color: #000; transform: scale(1.1); }
+.custom-color-wrapper { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+
+/* Toggles */
+.toggle-group { display: flex; background: #eee; border-radius: 25px; padding: 4px; }
+.toggle-btn {
+    flex: 1; background: none; border: none; padding: 8px; border-radius: 20px;
+    font-size: 0.9rem; cursor: pointer;
+}
+.toggle-btn.active { background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-weight: bold; }
+
+/* Range & Select */
+.styled-select { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; }
+.range-wrapper { padding: 0 10px; }
+input[type=range] { width: 100%; cursor: pointer; }
+.range-labels { display: flex; justify-content: space-between; font-size: 0.8rem; margin-top: 5px; color: #666; }
+
+/* PREVIEW PANEL (The Hand) */
+.preview-panel {
+    position: sticky; top: 100px;
+    background: #f9f9f9; padding: 20px; border-radius: var(--radius);
+    display: flex; justify-content: center; overflow: hidden;
+}
+.hand-container { position: relative; width: 300px; height: 500px; }
+.hand-svg { width: 100%; height: 100%; }
+.skin-tone { fill: #eebb99; stroke: #dcb090; stroke-width: 1px; }
+
+/* The Dynamic Nails */
+.nail-layer {
+    position: absolute;
+    width: 14%; /* Relative to container width */
+    background-color: #eec4c4; /* Default */
+    transform-origin: bottom center;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    /* Defaults */
+    height: 12%; 
+    border-radius: 4px;
+}
+.thumb-nail { width: 16%; }
+
+/* --- PRICING --- */
+.pricing-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.pricing-card {
+    background: var(--dark); color: #fff; padding: 30px; border-radius: var(--radius);
+}
+.price-display { font-size: 3rem; font-weight: bold; color: var(--primary); margin: 10px 0; }
+.price-breakdown { list-style: none; margin: 20px 0; font-size: 0.9rem; opacity: 0.9; }
+.price-breakdown li { display: flex; justify-content: space-between; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 4px; }
+
+/* --- LIBRARY & WISHLIST GRIDS --- */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+.design-card {
+    background: #fff; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow);
+    transition: transform 0.2s;
+}
+.design-card:hover { transform: translateY(-5px); }
+.card-preview { height: 150px; background: #eee; display: flex; align-items: center; justify-content: center; position: relative; }
+/* Mini representation of a nail in the card */
+.mini-nail { width: 40px; height: 60px; background: #ccc; border-radius: 50%; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+.card-body { padding: 15px; }
+.card-body h4 { font-size: 1.1rem; margin-bottom: 5px; }
+.card-tags span { background: #eee; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; margin-right: 4px; }
+.card-actions { display: flex; gap: 10px; margin-top: 15px; }
+
+/* --- BOOKING --- */
+.booking-form { display: flex; flex-direction: column; gap: 15px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.booking-form input, .booking-form select, .booking-form textarea {
+    padding: 12px; border: 1px solid #ccc; border-radius: 6px; width: 100%; font-family: inherit;
+}
+.booking-form textarea { height: 100px; resize: vertical; }
+
+/* --- FAQ ACCORDION --- */
+.accordion-item { background: #fff; margin-bottom: 10px; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.accordion-header {
+    width: 100%; text-align: left; padding: 20px; background: none; border: none;
+    font-weight: bold; cursor: pointer; display: flex; justify-content: space-between;
+}
+.accordion-body { padding: 0 20px 20px; display: none; color: #555; }
+.accordion-item.active .accordion-body { display: block; }
+
+/* --- MODAL --- */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+.modal[aria-hidden="false"] { opacity: 1; pointer-events: auto; }
+.modal-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+.modal-content { background: #fff; padding: 30px; border-radius: var(--radius); width: 90%; max-width: 400px; position: relative; z-index: 2; transform: translateY(20px); transition: transform 0.3s; }
+.modal[aria-hidden="false"] .modal-content { transform: translateY(0); }
+.modal-close { position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+.modal-input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; margin: 15px 0; }
+
+/* --- TOAST --- */
+.toast {
+    position: fixed; bottom: 30px; right: 30px; background: var(--dark); color: #fff;
+    padding: 12px 24px; border-radius: 8px; z-index: 3000;
+    animation: slideIn 0.3s ease-out;
+}
+@keyframes slideIn { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .builder-grid, .pricing-layout { grid-template-columns: 1fr; }
+    .preview-panel { position: relative; top: 0; height: 400px; margin-top: 20px; }
+    .main-nav { display: none; } /* Simplified mobile nav logic */
+    .mobile-nav-toggle { display: block; }
+}
+
+/* --- TRY ON ME (PHOTO MODE) --- */
+.tryon-photo{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius: 10px;
+    z-index:0;
+}
+
+.hand-container.photo-mode .hand-svg{
+    opacity:0;
+    pointer-events:none;
+}
+
+.hand-container .hand-svg{ position:relative; z-index:1; }
+.hand-container .nail-layer{ z-index:2; }
+
+
+
+/* Make overlays blend into the photo a bit more (still not "true AR", but less sticker-like) */
+.hand-container.photo-mode .nail-layer{
+    mix-blend-mode: multiply;
+    opacity: 0.92;
+    filter: saturate(1.08) contrast(1.05);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.hand-container.align-mode .nail-layer{
+    outline: 2px dashed rgba(0,0,0,0.25);
+    cursor: grab;
+}
+
+.hand-container.align-mode .nail-layer:active{
+    cursor: grabbing;
+}
+
+.upload-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
+    flex-wrap:wrap;
+}
+
+.btn-small{
+    padding: 8px 12px;
+    font-size: 0.85rem;
+}
+
+.btn-text.btn-small{
+    font-size: 0.85rem;
+}
